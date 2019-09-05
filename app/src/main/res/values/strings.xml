@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">EDDW</string>
+    <string name="choose_type">Select\nAttendee Type</string>
+    <string name="speaker">Speaker</string>
+    <string name="company_comment">You\'re a member of\na pharmaceutical company</string>
+    <string name="guest_comment">You want to participate\nto Conference</string>
+    <string name="company">Company</string>
+    <string name="guest">Guest</string>
+    <string name="badge_number">Badge number</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="not_a_member_register">Not a member? <b>Register</b></string>
+    <string name="register">Register</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email address</string>
+    <string name="speciality">Speciality</string>
+    <string name="help_title">How can we help you?</string>
+    <string name="meta_assist_q">Do you need meta assist ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="accommodation_q">Do you need Accommodation?</string>
+    <string name="room_type">Room Type</string>
+    <string name="single_room">Single Room</string>
+    <string name="double_room">Double Room</string>
+    <string name="transportation_q">Do you need Transportation?</string>
+    <string name="submit">Submit</string>
+    <string name="skip">Skip</string>
+    <string name="title_activity_home">Home</string>
+    <string name="favorites">My Favorites</string>
+    <string name="my_timeline">My Timeline</string>
+    <string name="my_notes">My Notes</string>
+    <string name="search_hint">Search</string>
+    <string name="know_more">Know more</string>
+</resources>

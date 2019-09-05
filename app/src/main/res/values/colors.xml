@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAppBlue">#5791D4</color>
+    <color name="colorAppRed">#E46868</color>
+    <color name="colorAppGreen">#61DA79</color>
+    <color name="textColor">#99000000</color>
+</resources>

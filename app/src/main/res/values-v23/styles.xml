@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAppBlue</item>
+        <item name="colorPrimaryDark">@color/colorAppGreen</item>
+        <item name="colorAccent">@color/colorAppRed</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <!--        <item name="android:navigationBarColor">@color/colorPrimary</item>-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:textAppearance">@style/app_textView</item>
+        <item name="android:textViewStyle">@style/app_textView</item>
+        <item name="windowActionBar">false</item>
+        <item name="buttonStyle">@style/app_button</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="materialButtonStyle">@style/app_button</item>
+    </style>
+</resources>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Titles">
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Dr</item>
+        <item>Prof</item>
+    </string-array>
+    <string-array name="Countries">
+        <item>Afghanistan-AFG</item>
+        <item>Albania-ALB</item>
+        <item>Algeria-DZA</item>
+        <item>Andorra-AND</item>
+        <item>Angola-AGO</item>
+        <item>Antigua and Barbuda-ATG</item>
+        <item>Argentina-ARG</item>
+        <item>Armenia-ARM</item>
+        <item>Australia-AUS</item>
+        <item>Austria-AUT</item>
+        <item>Azerbaijan-AZE</item>
+        <item>Bahamas-BHS</item>
+        <item>Bahrain-BHR</item>
+        <item>Bangladesh-BGD</item>
+        <item>Barbados-BRB</item>
+        <item>Belarus-BLR</item>
+        <item>Belgium-BEL</item>
+        <item>Belize-BLZ</item>
+        <item>Benin-BEN</item>
+        <item>Bhutan-BTN</item>
+        <item>Bolivia -BOL</item>
+        <item>Bosnia and Herzegovina-BIH</item>
+        <item>Botswana-BWA</item>
+        <item>Brazil-BRA</item>
+        <item>Brunei Darussalam-BRN</item>
+        <item>Bulgaria-BGR</item>
+        <item>Burkina Faso-BFA</item>
+        <item>Burundi-BDI</item>
+        <item>Cabo Verde-CPV</item>
+        <item>Cambodia-KHM</item>
+        <item>Cameroon-CMR</item>
+        <item>Canada-CAN</item>
+        <item>Central African Republic-CAF</item>
+        <item>Chad-TCD</item>
+        <item>Chile-CHL</item>
+        <item>China-CHN</item>
+        <item>Colombia-COL</item>
+        <item>Comoros-COM</item>
+        <item>Congo-COG</item>
+        <item>Cook Islands-COK</item>
+        <item>Costa Rica-CRI</item>
+        <item>Croatia-HRV</item>
+        <item>Cuba-CUB</item>
+        <item>Cyprus-CYP</item>
+        <item>Czechia-CZE</item>
+        <item>Côte d\'Ivoire-CIV</item>
+        <item>Democratic People\'s Republic of Korea-PRK</item>
+        <item>Democratic Republic of the Congo-COD</item>
+        <item>Denmark-DNK</item>
+        <item>Djibouti-DJI</item>
+        <item>Dominica-DMA</item>
+        <item>Dominican Republic-DOM</item>
+        <item>Ecuador-ECU</item>
+        <item>Egypt-EGY</item>
+        <item>El Salvador-SLV</item>
+        <item>Equatorial Guinea-GNQ</item>
+        <item>Eritrea-ERI</item>
+        <item>Estonia-EST</item>
+        <item>Eswatini-SWZ</item>
+        <item>Ethiopia-ETH</item>
+        <item>Faroe Islands-FRO</item>
+        <item>Fiji-FJI</item>
+        <item>Finland-FIN</item>
+        <item>France-FRA</item>
+        <item>Gabon-GAB</item>
+        <item>Gambia-GMB</item>
+        <item>Georgia-GEO</item>
+        <item>Germany-DEU</item>
+        <item>Ghana-GHA</item>
+        <item>Greece-GRC</item>
+        <item>Grenada-GRD</item>
+        <item>Guatemala-GTM</item>
+        <item>Guinea-GIN</item>
+        <item>GuineaBissau-GNB</item>
+        <item>Guyana-GUY</item>
+        <item>Haiti-HTI</item>
+        <item>Honduras-HND</item>
+        <item>Hungary-HUN</item>
+        <item>Iceland-ISL</item>
+        <item>India-IND</item>
+        <item>Indonesia-IDN</item>
+        <item>Iran -IRN</item>
+        <item>Iraq-IRQ</item>
+        <item>Ireland-IRL</item>
+        <item>Israel-ISR</item>
+        <item>Italy-ITA</item>
+        <item>Jamaica-JAM</item>
+        <item>Japan-JPN</item>
+        <item>Jordan-JOR</item>
+        <item>Kazakhstan-KAZ</item>
+        <item>Kenya-KEN</item>
+        <item>Kiribati-KIR</item>
+        <item>Kuwait-KWT</item>
+        <item>Kyrgyzstan-KGZ</item>
+        <item>Lao People\'s Democratic Republic-LAO</item>
+        <item>Latvia-LVA</item>
+        <item>Lebanon-LBN</item>
+        <item>Lesotho-LSO</item>
+        <item>Liberia-LBR</item>
+        <item>Libya-LBY</item>
+        <item>Lithuania-LTU</item>
+        <item>Luxembourg-LUX</item>
+        <item>Madagascar-MDG</item>
+        <item>Malawi-MWI</item>
+        <item>Malaysia-MYS</item>
+        <item>Maldives-MDV</item>
+        <item>Mali-MLI</item>
+        <item>Malta-MLT</item>
+        <item>Marshall Islands-MHL</item>
+        <item>Mauritania-MRT</item>
+        <item>Mauritius-MUS</item>
+        <item>Mexico-MEX</item>
+        <item>Micronesia -FSM</item>
+        <item>Monaco-MCO</item>
+        <item>Mongolia-MNG</item>
+        <item>Montenegro-MNE</item>
+        <item>Morocco-MAR</item>
+        <item>Mozambique-MOZ</item>
+        <item>Myanmar-MMR</item>
+        <item>Namibia-NAM</item>
+        <item>Nauru-NRU</item>
+        <item>Nepal-NPL</item>
+        <item>Netherlands-NLD</item>
+        <item>New Zealand-NZL</item>
+        <item>Nicaragua-NIC</item>
+        <item>Niger-NER</item>
+        <item>Nigeria-NGA</item>
+        <item>Niue-NIU</item>
+        <item>North Macedonia-MKD</item>
+        <item>Norway-NOR</item>
+        <item>Oman-OMN</item>
+        <item>Pakistan-PAK</item>
+        <item>Palau-PLW</item>
+        <item>Panama-PAN</item>
+        <item>Papua New Guinea-PNG</item>
+        <item>Paraguay-PRY</item>
+        <item>Peru-PER</item>
+        <item>Philippines-PHL</item>
+        <item>Poland-POL</item>
+        <item>Portugal-PRT</item>
+        <item>Qatar-QAT</item>
+        <item>Republic of Korea-KOR</item>
+        <item>Republic of Moldova-MDA</item>
+        <item>Romania-ROU</item>
+        <item>Russian Federation-RUS</item>
+        <item>Rwanda-RWA</item>
+        <item>Saint Kitts and Nevis-KNA</item>
+        <item>Saint Lucia-LCA</item>
+        <item>Saint Vincent and the Grenadines-VCT</item>
+        <item>Samoa-WSM</item>
+        <item>San Marino-SMR</item>
+        <item>Sao Tome and Principe-STP</item>
+        <item>Saudi Arabia-SAU</item>
+        <item>Senegal-SEN</item>
+        <item>Serbia-SRB</item>
+        <item>Seychelles-SYC</item>
+        <item>Sierra Leone-SLE</item>
+        <item>Singapore-SGP</item>
+        <item>Slovakia-SVK</item>
+        <item>Slovenia-SVN</item>
+        <item>Solomon Islands-SLB</item>
+        <item>Somalia-SOM</item>
+        <item>South Africa-ZAF</item>
+        <item>South Sudan-SSD</item>
+        <item>Spain-ESP</item>
+        <item>Sri Lanka-LKA</item>
+        <item>Sudan-SDN</item>
+        <item>Suriname-SUR</item>
+        <item>Sweden-SWE</item>
+        <item>Switzerland-CHE</item>
+        <item>Syrian Arab Republic-SYR</item>
+        <item>Tajikistan-TJK</item>
+        <item>Thailand-THA</item>
+        <item>TimorLeste-TLS</item>
+        <item>Togo-TGO</item>
+        <item>Tokelau-TKL</item>
+        <item>Tonga-TON</item>
+        <item>Trinidad and Tobago-TTO</item>
+        <item>Tunisia-TUN</item>
+        <item>Turkey-TUR</item>
+        <item>Turkmenistan-TKM</item>
+        <item>Tuvalu-TUV</item>
+        <item>Uganda-UGA</item>
+        <item>Ukraine-UKR</item>
+        <item>United Arab Emirates-ARE</item>
+        <item>United Kingdom-GBR</item>
+        <item>United Republic of Tanzania-TZA</item>
+        <item>United States of America-USA</item>
+        <item>Uruguay-URY</item>
+        <item>Uzbekistan-UZB</item>
+        <item>Vanuatu-VUT</item>
+        <item>Venezuela -VEN</item>
+        <item>Viet Nam-VNM</item>
+        <item>Yemen-YEM</item>
+        <item>Zambia-ZMB</item>
+        <item>Zimbabwe-ZWE</item>
+
+    </string-array>
+</resources>
