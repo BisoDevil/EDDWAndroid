@@ -1,9 +1,10 @@
-package com.innovationcodes.eddw
+package com.innovationcodes.eddw.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.innovationcodes.eddw.R
 
 class SplashActivity : AppCompatActivity() {
 

@@ -1,8 +1,9 @@
-package com.innovationcodes.eddw
+package com.innovationcodes.eddw.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.innovationcodes.eddw.R
 import kotlinx.android.synthetic.main.activity_guest_register.*
 
 class GuestRegisterActivity : AppCompatActivity() {

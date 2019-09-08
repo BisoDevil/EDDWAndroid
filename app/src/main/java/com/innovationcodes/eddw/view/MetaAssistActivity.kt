@@ -1,7 +1,8 @@
-package com.innovationcodes.eddw
+package com.innovationcodes.eddw.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.innovationcodes.eddw.R
 import com.wisnu.datetimerangepickerandroid.CalendarPickerView
 import kotlinx.android.synthetic.main.activity_meta_assist.*
 import java.util.*

@@ -24,7 +24,7 @@
     <string name="single_room">Single Room</string>
     <string name="double_room">Double Room</string>
     <string name="transportation_q">Do you need Transportation?</string>
-    <string name="submit">Submit</string>
+
     <string name="skip">Skip</string>
     <string name="title_activity_home">Home</string>
     <string name="favorites">My Favorites</string>
@@ -32,4 +32,17 @@
     <string name="my_notes">My Notes</string>
     <string name="search_hint">Search</string>
     <string name="know_more">Know more</string>
+    <string name="programme">Scientific Programme</string>
+    <string name="sponsors">Sponsors</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_programme_detail">Programme Detail</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="information">Information</string>
+    <string name="attendance_code">Attendance Code</string>
+    <string name="submit">Submit</string>
+    <string name="note">Note</string>
+    <string name="write_your_note">Write your note</string>
 </resources>

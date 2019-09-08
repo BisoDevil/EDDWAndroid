@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.innovationcodes.eddw">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <dist:module dist:instant="true" />
 
     <application
@@ -16,19 +18,24 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".view.ScientificProgramme" />
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"></activity>
-        <activity android:name=".MetaAssistActivity" />
-        <activity android:name=".GuestRegisterActivity" />
-        <activity android:name=".GuestLoginActivity" />
-        <activity android:name=".CompanyLoginActivity" />
-        <activity android:name=".SpeakerLoginActivity" />
+            android:name=".view.ProgrammeDetailActivity"
+
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChooseTypeActivity"
+            android:name=".view.HomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity android:name=".view.MetaAssistActivity" />
+        <activity android:name=".view.GuestRegisterActivity" />
+        <activity android:name=".view.GuestLoginActivity" />
+        <activity android:name=".view.CompanyLoginActivity" />
+        <activity android:name=".view.SpeakerLoginActivity" />
+        <activity
+            android:name=".view.ChooseTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

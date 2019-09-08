@@ -205,4 +205,9 @@
         <item>Zimbabwe-ZWE</item>
 
     </string-array>
+    <string-array name="tab_titles">
+        <item>In Progress</item>
+        <item>Upcoming</item>
+        <item>Completed</item>
+    </string-array>
 </resources>

@@ -1,10 +1,10 @@
-package com.innovationcodes.eddw
+package com.innovationcodes.eddw.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.innovationcodes.eddw.R
 import kotlinx.android.synthetic.main.activity_guest_login.*
-import kotlinx.android.synthetic.main.activity_speaker_login.*
 
 class GuestLoginActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class GuestLoginActivity : AppCompatActivity() {
             finish()
         }
         txtRegister.setOnClickListener {
-            val regView = Intent(this,GuestRegisterActivity::class.java)
+            val regView = Intent(this, GuestRegisterActivity::class.java)
             startActivity(regView)
         }
     }

@@ -7,26 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.innovationcodes.eddw.ui.HomeFragment"
+        android:name="com.innovationcodes.eddw.fragment.HomeFragment"
         android:label="@string/title_activity_home"
         tools:layout="@layout/fragment_home" />
 
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.innovationcodes.eddw.ui.FavoriteFragment"
+        android:name="com.innovationcodes.eddw.fragment.FavoriteFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/navigation_notes"
-        android:name="com.innovationcodes.eddw.ui.NoteFragment"
+        android:name="com.innovationcodes.eddw.fragment.NoteFragment"
         android:label="@string/my_notes"
         tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/navigation_timeLine"
-        android:name="com.innovationcodes.eddw.ui.TimelineFragment"
+        android:name="com.innovationcodes.eddw.fragment.TimelineFragment"
         android:label="@string/my_timeline"
         tools:layout="@layout/fragment_timeline" />
 </navigation>
