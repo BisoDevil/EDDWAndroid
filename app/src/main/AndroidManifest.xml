@@ -18,10 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".view.SponsorActivity"></activity>
         <activity android:name=".view.ScientificProgramme" />
         <activity
             android:name=".view.ProgrammeDetailActivity"
-
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.HomeActivity"

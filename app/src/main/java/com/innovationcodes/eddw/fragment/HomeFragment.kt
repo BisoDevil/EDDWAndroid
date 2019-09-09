@@ -15,6 +15,7 @@ import com.innovationcodes.eddw.controller.ProgrammeViewModel
 import com.innovationcodes.eddw.controller.ServerOperations
 import com.innovationcodes.eddw.model.Programme
 import com.innovationcodes.eddw.view.ScientificProgramme
+import com.innovationcodes.eddw.view.SponsorActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
@@ -42,18 +43,22 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         operations = ServerOperations(context!!)
-        operations.retrieveProgramme {
-            ProgrammeViewModel.programs.postValue(it)
-
-        }
         view.cardHomeProgramme.setOnClickListener {
             showAllProgrammes()
+        }
+        view.cardHomeSponsors.setOnClickListener {
+            showAllSponsors()
         }
 
     }
 
     private fun showAllProgrammes() {
         val pro = Intent(context!!, ScientificProgramme::class.java)
+        startActivity(pro)
+    }
+
+    private fun showAllSponsors() {
+        val pro = Intent(context!!, SponsorActivity::class.java)
         startActivity(pro)
     }
 

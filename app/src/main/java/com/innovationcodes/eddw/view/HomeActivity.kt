@@ -1,11 +1,13 @@
 package com.innovationcodes.eddw.view
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.innovationcodes.eddw.R
+import com.innovationcodes.eddw.controller.ProgrammeViewModel
+import com.innovationcodes.eddw.controller.ServerOperations
 
 class HomeActivity : AppCompatActivity() {
 
@@ -19,5 +21,9 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         navView.setupWithNavController(navController)
+        ServerOperations(this).retrieveProgramme {
+            ProgrammeViewModel.programs.postValue(it)
+
+        }
     }
 }

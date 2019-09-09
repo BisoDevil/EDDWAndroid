@@ -2,17 +2,20 @@ package com.innovationcodes.eddw.fragment
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.innovationcodes.eddw.R
+import com.innovationcodes.eddw.adapter.TimelineAdapter
+import com.innovationcodes.eddw.controller.ServerOperations
+import kotlinx.android.synthetic.main.fragment_timeline.view.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class TimelineFragment : Fragment() {
 
+    private lateinit var operations: ServerOperations
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,5 +24,16 @@ class TimelineFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_timeline, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        operations = ServerOperations(context!!)
+        operations.retrieveTimeline {
+            val layout = LinearLayoutManager(context)
+            val adapter = TimelineAdapter(it)
+            view.timelineRecyclerView.layoutManager = layout
+            view.timelineRecyclerView.adapter = adapter
+        }
+
+    }
 
 }

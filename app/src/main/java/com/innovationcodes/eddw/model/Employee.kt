@@ -13,8 +13,9 @@ class Employee {
     var type: Int = 0
     var messageToken: String = ""
     var token: String = ""
+
+    class Company {
+        var name: String = ""
+    }
 }
 
-class Company {
-    var name: String = ""
-}

@@ -12,9 +12,7 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.innovationcodes.eddw.R
-import com.innovationcodes.eddw.model.Employee
-import com.innovationcodes.eddw.model.Programme
-import com.innovationcodes.eddw.model.Speaker
+import com.innovationcodes.eddw.model.*
 
 class ServerOperations(var context: Context) {
     private var dialog: AlertDialog
@@ -50,6 +48,9 @@ class ServerOperations(var context: Context) {
         return shared.getString("name", "") ?: ""
     }
 
+    private fun getId(): String {
+        return shared.getString("id", "") ?: ""
+    }
 
     fun loginSpeaker(username: String, callback: (logged: Boolean) -> Unit) {
         baseRequest("Speaker/Authenticate/$username", Speaker::class.java) { speaker: Speaker? ->
@@ -102,6 +103,36 @@ class ServerOperations(var context: Context) {
             } else {
                 println("Basem ${progs.first().status}")
                 callback(progs)
+            }
+
+        }
+    }
+
+
+    fun retrieveTimeline(callback: (times: ArrayList<Timeline>) -> Unit) {
+        baseArrayRequest(
+            "Timeline/${getId()}",
+            Timeline::class.java
+        ) { times: ArrayList<Timeline>? ->
+
+            if (times.isNullOrEmpty()) {
+                return@baseArrayRequest
+            } else {
+                println("Basem ${times.first().title}")
+                callback(times)
+            }
+
+        }
+    }
+
+    fun retrieveSponsors(callback: (times: ArrayList<Sponsor>) -> Unit) {
+        baseArrayRequest("Sponsor", Sponsor::class.java) { times: ArrayList<Sponsor>? ->
+
+            if (times.isNullOrEmpty()) {
+                return@baseArrayRequest
+            } else {
+
+                callback(times)
             }
 
         }
