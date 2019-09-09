@@ -8,7 +8,6 @@ import com.innovationcodes.eddw.R
 import com.innovationcodes.eddw.adapter.SpeakerAdapter
 import com.innovationcodes.eddw.controller.ServerOperations
 import kotlinx.android.synthetic.main.activity_speaker.*
-import kotlinx.android.synthetic.main.activity_sponsor.*
 
 class SpeakerActivity : AppCompatActivity() {
     private lateinit var operations: ServerOperations
@@ -20,9 +19,9 @@ class SpeakerActivity : AppCompatActivity() {
             val layout = LinearLayoutManager(this)
             val divider = DividerItemDecoration(this, layout.orientation)
             val adapter = SpeakerAdapter(it)
-            sponsorRV.layoutManager = layout
-            sponsorRV.adapter = adapter
-            sponsorRV.addItemDecoration(divider)
+            speakerRV.layoutManager = layout
+            speakerRV.adapter = adapter
+            speakerRV.addItemDecoration(divider)
         }
         btnSpeakerBack.setOnClickListener {
             finish()
