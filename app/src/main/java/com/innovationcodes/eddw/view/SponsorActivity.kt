@@ -2,6 +2,7 @@ package com.innovationcodes.eddw.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.innovationcodes.eddw.R
 import com.innovationcodes.eddw.adapter.SponsorAdapter
@@ -17,9 +18,11 @@ class SponsorActivity : AppCompatActivity() {
         operations = ServerOperations(this)
         operations.retrieveSponsors {
             val layout = LinearLayoutManager(this)
+            val divider = DividerItemDecoration(this, layout.orientation)
             val adapter = SponsorAdapter(it)
             sponsorRV.layoutManager = layout
             sponsorRV.adapter = adapter
+            sponsorRV.addItemDecoration(divider)
         }
         btnSponsorBack.setOnClickListener {
             finish()

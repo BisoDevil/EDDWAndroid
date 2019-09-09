@@ -138,6 +138,43 @@ class ServerOperations(var context: Context) {
         }
     }
 
+    fun saveAttendance(code: String, programmeId: Int) {
+        val att = Attendance()
+        att.userId = getId()
+        att.programmeId = programmeId
+        AndroidNetworking.post("${host}Attendance/$code")
+            .setPriority(Priority.MEDIUM)
+            .addApplicationJsonBody(att)
+            .build()
+            .getAsObject(Attendance::class.java, object : ParsedRequestListener<Attendance> {
+                override fun onResponse(response: Attendance?) {
+                    Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onError(anError: ANError?) {
+                    Toast.makeText(context, "wrong attendance code", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+
+    fun saveQuestion(question: Question) {
+        question.userId = getId()
+        AndroidNetworking.post("${host}Question")
+            .setPriority(Priority.MEDIUM)
+            .addApplicationJsonBody(question)
+            .build()
+            .getAsObject(Question::class.java, object : ParsedRequestListener<Question> {
+                override fun onResponse(response: Question?) {
+                    Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onError(anError: ANError?) {
+                    Toast.makeText(context, "wrong attendance code", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 
     private fun <T, C> baseRequest(url: String, c: Class<C>, callback: (res: T?) -> Unit) {
         showHideLoadingView()

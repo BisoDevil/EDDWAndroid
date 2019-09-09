@@ -35,7 +35,7 @@ class SponsorAdapter(private var items: List<Sponsor>) :
         fun bindItems(item: Sponsor) {
 
             itemView.tvSponsorName.text = item.name
-            itemView.tvSponsorInfo.text = item.information
+            itemView.tvSponsorInfo.text = item.inforamtion
 
         }
 

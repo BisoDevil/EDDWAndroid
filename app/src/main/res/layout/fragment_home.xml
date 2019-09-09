@@ -47,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHomeFullName">
 
         <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:queryHint="@string/search_hint"
@@ -87,7 +88,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardHomeProgramme"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="95dp"
                 android:layout_margin="4dp"
                 app:cardBackgroundColor="@color/colorAppRed"
@@ -111,7 +112,7 @@
                         app:srcCompat="@drawable/programme" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/programme"
                         android:textColor="@android:color/white"

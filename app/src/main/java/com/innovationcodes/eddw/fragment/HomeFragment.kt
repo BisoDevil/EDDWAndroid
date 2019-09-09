@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
             val homeAdapter = DashboardPagerAdapter(childFragmentManager, it)
             root.viewerHome.adapter = homeAdapter
             root.tabHomeLayout.setupWithViewPager(root.viewerHome, true)
+            root.tabHomeLayout.getTabAt(1)?.select()
         })
         return root
     }
@@ -49,7 +50,7 @@ class HomeFragment : Fragment() {
         view.cardHomeSponsors.setOnClickListener {
             showAllSponsors()
         }
-
+        setupSearchForProgramme()
     }
 
     private fun showAllProgrammes() {
@@ -66,6 +67,19 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         view!!.tvHomeFullName.text = "Hello,\n${operations.getFullName()}"
+    }
+
+    private fun setupSearchForProgramme() {
+
+//        view!!.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return true
+//            }
+//        })
     }
 
 
