@@ -15,6 +15,7 @@ import com.innovationcodes.eddw.controller.ProgrammeViewModel
 import com.innovationcodes.eddw.controller.ServerOperations
 import com.innovationcodes.eddw.model.Programme
 import com.innovationcodes.eddw.view.ScientificProgramme
+import com.innovationcodes.eddw.view.SpeakerActivity
 import com.innovationcodes.eddw.view.SponsorActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -50,6 +51,9 @@ class HomeFragment : Fragment() {
         view.cardHomeSponsors.setOnClickListener {
             showAllSponsors()
         }
+        view.cardHomeSpeakers.setOnClickListener {
+            showAllSpeaker()
+        }
         setupSearchForProgramme()
     }
 
@@ -60,6 +64,11 @@ class HomeFragment : Fragment() {
 
     private fun showAllSponsors() {
         val pro = Intent(context!!, SponsorActivity::class.java)
+        startActivity(pro)
+    }
+
+    private fun showAllSpeaker() {
+        val pro = Intent(context!!, SpeakerActivity::class.java)
         startActivity(pro)
     }
 

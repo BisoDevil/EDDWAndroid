@@ -10,7 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/sponsor" />
+        android:src="@drawable/speaker" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -21,15 +21,15 @@
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/tvSponsorName"
+            android:id="@+id/tvSpeakerName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
             tools:text="@tools:sample/lorem[3]" />
 
         <TextView
-            android:id="@+id/tvSponsorInfo"
+            android:id="@+id/tvSpeakerInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@tools:sample/lorem[4]" />

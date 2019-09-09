@@ -18,7 +18,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".view.SponsorActivity"></activity>
+        <activity android:name=".view.SpeakerActivity"></activity>
+        <activity android:name=".view.SponsorActivity" />
         <activity android:name=".view.ScientificProgramme" />
         <activity
             android:name=".view.ProgrammeDetailActivity"

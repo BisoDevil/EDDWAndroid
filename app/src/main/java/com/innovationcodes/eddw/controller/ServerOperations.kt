@@ -138,6 +138,18 @@ class ServerOperations(var context: Context) {
         }
     }
 
+    fun retriveSpeakers(callback: (speakers: ArrayList<Speaker>) -> Unit) {
+        baseArrayRequest("Speaker", Speaker::class.java) { times: ArrayList<Speaker>? ->
+
+            if (times.isNullOrEmpty()) {
+                return@baseArrayRequest
+            } else {
+                callback(times)
+            }
+
+        }
+    }
+
     fun saveAttendance(code: String, programmeId: Int) {
         val att = Attendance()
         att.userId = getId()
