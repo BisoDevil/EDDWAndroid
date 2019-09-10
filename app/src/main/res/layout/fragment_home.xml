@@ -14,19 +14,18 @@
         android:layout_marginEnd="16dp"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imgUser"
+        app:layout_constraintEnd_toStartOf="@+id/imgEditUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Hello,\nBasem Abduallah" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgUser"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+    <ImageView
+        android:id="@+id/imgEditUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:src="@drawable/speaker"
-        app:civ_border_color="@color/colorAppBlue"
-        app:civ_border_width="3dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/tvHomeFullName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvHomeFullName" />

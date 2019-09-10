@@ -42,6 +42,7 @@ class ProgrammeDetailActivity : AppCompatActivity() {
         tvProDetailLocation.text = programme.room.name
         tvProDetailInformation.text = programme.description
         tvProDetailSpeakerName.text = programme.speaker.fullname
+        title = programme.speaker.fullname
         txtProDetailNote.setText(dbOperations.getNote(id))
         btnProDetailNote.setOnClickListener {
             saveNote(programme)
@@ -50,7 +51,7 @@ class ProgrammeDetailActivity : AppCompatActivity() {
             saveAttendance()
         }
         fabSendQuestion.setOnClickListener {
-            askQuestion()
+            askQuestion(programme)
         }
     }
 
@@ -70,7 +71,7 @@ class ProgrammeDetailActivity : AppCompatActivity() {
     }
 
     @SuppressLint("InflateParams")
-    private fun askQuestion() {
+    private fun askQuestion(programme: Programme) {
 
         val dialog = AlertDialog.Builder(this)
 //        dialog.window!!.setBackgroundDrawableResource(R.drawable.rounded_background)
@@ -84,6 +85,8 @@ class ProgrammeDetailActivity : AppCompatActivity() {
                 return@setPositiveButton
             }
             val q = Question()
+            q.programmeId = programme.id
+            q.question = input.text.toString()
             operations.saveQuestion(q)
             oDialog.dismiss()
         }

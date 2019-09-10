@@ -2,6 +2,7 @@ package com.innovationcodes.eddw.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +55,12 @@ class HomeFragment : Fragment() {
         view.cardHomeSpeakers.setOnClickListener {
             showAllSpeaker()
         }
+
+        view.imgEditUser.setOnClickListener {
+            sendMail()
+        }
+
+
         setupSearchForProgramme()
     }
 
@@ -70,6 +77,18 @@ class HomeFragment : Fragment() {
     private fun showAllSpeaker() {
         val pro = Intent(context!!, SpeakerActivity::class.java)
         startActivity(pro)
+    }
+
+
+    private fun sendMail() {
+        val emailIntent = Intent(
+            Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "test@mail.com", null
+            )
+        )
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Edit my profile")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Kindly I need to edit my profile with...")
+        startActivity(Intent.createChooser(emailIntent, "Send email..."))
     }
 
     @SuppressLint("SetTextI18n")

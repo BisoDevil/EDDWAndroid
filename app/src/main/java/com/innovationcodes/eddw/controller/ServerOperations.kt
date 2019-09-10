@@ -95,6 +95,86 @@ class ServerOperations(var context: Context) {
         }
     }
 
+    fun loginGuest(username: String, password: String, callback: (logged: Boolean) -> Unit) {
+        baseRequest(
+            "Guest/Authenticate/$username/$password",
+            Employee::class.java
+        ) { employee: Employee? ->
+            if (employee != null) {
+                shared.edit {
+                    putString("name", employee.fullname)
+                    putString("token", employee.token)
+                    putString("username", employee.username)
+                    putInt("title", employee.title)
+                    putString("id", employee.id)
+                }
+                Toast.makeText(context, "Welcome, ${employee.fullname}", Toast.LENGTH_LONG).show()
+                callback(true)
+            } else {
+                callback(false)
+            }
+
+
+        }
+    }
+
+
+    fun registerGuest(guest: Guest, callback: (logged: Boolean) -> Unit) {
+        showHideLoadingView()
+        AndroidNetworking.post("${host}Guest")
+            .setPriority(Priority.HIGH)
+            .addApplicationJsonBody(guest)
+            .build()
+            .getAsObject(Guest::class.java, object : ParsedRequestListener<Guest> {
+                override fun onResponse(response: Guest?) {
+                    showHideLoadingView()
+                    if (response != null) {
+                        shared.edit {
+                            putString("name", response.fullname)
+                            putString("token", response.accessToken)
+                            putString("username", response.username)
+                            putInt("title", response.title)
+                            putString("id", response.id)
+                        }
+
+                        callback(true)
+                    } else {
+                        callback(false)
+                    }
+                }
+
+                override fun onError(anError: ANError?) {
+                    showHideLoadingView()
+                    callback(false)
+                    println("Basem ${anError?.errorDetail},${anError?.errorBody}")
+                }
+            })
+    }
+
+    fun createMetaAssist(meta: MetaAssist, callback: (MetaAssist: MetaAssist) -> Unit) {
+        meta.user = getId()
+        showHideLoadingView()
+        AndroidNetworking.post("${host}MetaAssist")
+            .setPriority(Priority.HIGH)
+            .addApplicationJsonBody(meta)
+            .build()
+            .getAsObject(MetaAssist::class.java, object : ParsedRequestListener<MetaAssist> {
+                override fun onResponse(response: MetaAssist?) {
+                    showHideLoadingView()
+                    if (response != null) {
+                        callback(response)
+                    } else {
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onError(anError: ANError?) {
+                    showHideLoadingView()
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 
     fun retrieveProgramme(callback: (prog: ArrayList<Programme>) -> Unit) {
         baseArrayRequest("Programme", Programme::class.java) { progs: ArrayList<Programme>? ->
@@ -182,7 +262,7 @@ class ServerOperations(var context: Context) {
                 }
 
                 override fun onError(anError: ANError?) {
-                    Toast.makeText(context, "wrong attendance code", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, anError?.errorDetail, Toast.LENGTH_SHORT).show()
                 }
             })
     }

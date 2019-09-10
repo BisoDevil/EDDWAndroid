@@ -46,4 +46,9 @@
     <string name="note">Note</string>
     <string name="write_your_note">Write your note</string>
     <string name="ask_you_question">ask you Question</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_holder_name">Card holder Name</string>
+    <string name="exp_date">Exp.Date</string>
+    <string name="cvc">CVC</string>
+    <string name="checkout">Checkout</string>
 </resources>
