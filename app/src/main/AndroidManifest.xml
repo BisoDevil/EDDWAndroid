@@ -21,37 +21,51 @@
         <activity android:name=".view.CheckoutActivity">
 
         </activity>
-        <activity android:name=".view.SpeakerActivity" />
-        <activity android:name=".view.SponsorActivity" />
-        <activity android:name=".view.ScientificProgramme" />
+        <activity
+            android:name=".view.SpeakerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.SponsorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.ScientificProgramme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.ProgrammeDetailActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.HomeActivity"
-            android:label="@string/title_activity_home" />
-        <activity android:name=".view.MetaAssistActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.MetaAssistActivity"
+            android:screenOrientation="portrait">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".view.GuestRegisterActivity" />
-        <activity android:name=".view.GuestLoginActivity" />
-        <activity android:name=".view.CompanyLoginActivity" />
-        <activity android:name=".view.SpeakerLoginActivity" />
+        <activity
+            android:name=".view.GuestRegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.GuestLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.CompanyLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.SpeakerLoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.ChooseTypeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.SplashActivity"
             android:screenOrientation="portrait">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
