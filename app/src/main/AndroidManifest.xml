@@ -30,7 +30,13 @@
         <activity
             android:name=".view.HomeActivity"
             android:label="@string/title_activity_home" />
-        <activity android:name=".view.MetaAssistActivity" />
+        <activity android:name=".view.MetaAssistActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.GuestRegisterActivity" />
         <activity android:name=".view.GuestLoginActivity" />
         <activity android:name=".view.CompanyLoginActivity" />
@@ -41,11 +47,11 @@
         <activity
             android:name=".view.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
     </application>
 

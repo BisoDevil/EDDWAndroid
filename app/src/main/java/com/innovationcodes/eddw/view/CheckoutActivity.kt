@@ -1,5 +1,6 @@
 package com.innovationcodes.eddw.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,8 +19,16 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checkout)
         operations = ServerOperations(this)
         designCardDetails()
+        btnCheckout.setOnClickListener {
+            showHome()
+        }
     }
 
+
+    private fun showHome() {
+        val homeView = Intent(this, HomeActivity::class.java)
+        startActivity(homeView)
+    }
 
     private fun designCardDetails() {
         txtCardNumber.addTextChangedListener(object : TextWatcher {

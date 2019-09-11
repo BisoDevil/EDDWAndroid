@@ -20,6 +20,7 @@ class MetaAssistActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meta_assist)
+        operations = ServerOperations(this)
         val nextYear = Calendar.getInstance()
         nextYear.add(Calendar.YEAR, 1)
         calendar_view.init(Date(), nextYear.time)
@@ -43,6 +44,7 @@ class MetaAssistActivity : AppCompatActivity() {
             metadata.accoEndDate = sd.format(calendar_view.selectedDates.last())
         } else {
             Toast.makeText(this, "Please select end date", Toast.LENGTH_SHORT).show()
+            return
         }
         metadata.isTransportation = rdTransportationYes.isChecked
         metadata.room = if (rdRoomYes.isChecked) 0 else 1
