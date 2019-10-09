@@ -8,11 +8,14 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.core.content.edit
 import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Method
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.ParsedRequestListener
+import com.androidnetworking.interfaces.OkHttpResponseAndParsedRequestListener
+import com.google.gson.reflect.TypeToken
 import com.innovationcodes.eddw.R
 import com.innovationcodes.eddw.model.*
+import okhttp3.Response
 
 class ServerOperations(var context: Context) {
     private var dialog: AlertDialog
@@ -26,12 +29,11 @@ class ServerOperations(var context: Context) {
         dialog = AlertDialog.Builder(context).create()
         @SuppressLint("InflateParams")
         val inflated = LayoutInflater.from(context).inflate(R.layout.loading_view, null)
-
         dialog.setView(inflated)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
-    private fun showHideLoadingView() {
+    internal fun showHideLoadingView() {
         if (dialog.isShowing) {
             dialog.dismiss()
         } else {
@@ -53,257 +55,204 @@ class ServerOperations(var context: Context) {
     }
 
     fun loginSpeaker(username: String, callback: (logged: Boolean) -> Unit) {
-        baseRequest("Speaker/Authenticate/$username", Speaker::class.java) { speaker: Speaker? ->
-            if (speaker != null) {
+
+        dynamicRequest<Speaker>(url = "Speaker/Authenticate/$username") {
+            if (it != null) {
                 shared.edit {
-                    putString("name", speaker.fullname)
-                    putString("token", speaker.token)
-                    putString("username", speaker.username)
-                    putInt("title", speaker.title)
-                    putString("id", speaker.id)
+                    putString("name", it.fullname)
+                    putString("token", it.token)
+                    putString("username", it.username)
+                    putInt("title", it.title)
+                    putString("id", it.id)
                 }
-                Toast.makeText(context, "Welcome, ${speaker.fullname}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Welcome, ${it.fullname}", Toast.LENGTH_LONG).show()
                 callback(true)
             } else {
                 callback(false)
             }
-
-
         }
     }
 
     fun loginEmployee(username: String, callback: (logged: Boolean) -> Unit) {
-        baseRequest(
-            "Employee/Authenticate/$username",
-            Employee::class.java
-        ) { employee: Employee? ->
-            if (employee != null) {
+        dynamicRequest<Employee>(url = "Employee/Authenticate/$username") {
+            if (it != null) {
                 shared.edit {
-                    putString("name", employee.fullname)
-                    putString("token", employee.token)
-                    putString("username", employee.username)
-                    putInt("title", employee.title)
-                    putString("id", employee.id)
+                    putString("name", it.fullname)
+                    putString("token", it.token)
+                    putString("username", it.username)
+                    putInt("title", it.title)
+                    putString("id", it.id)
                 }
-                Toast.makeText(context, "Welcome, ${employee.fullname}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Welcome, ${it.fullname}", Toast.LENGTH_LONG).show()
                 callback(true)
             } else {
                 callback(false)
             }
-
-
         }
+
     }
 
     fun loginGuest(username: String, password: String, callback: (logged: Boolean) -> Unit) {
-        baseRequest(
-            "Guest/Authenticate/$username/$password",
-            Employee::class.java
-        ) { employee: Employee? ->
-            if (employee != null) {
+        dynamicRequest<Guest>(url = "Guest/Authenticate/$username/$password") {
+            if (it != null) {
                 shared.edit {
-                    putString("name", employee.fullname)
-                    putString("token", employee.token)
-                    putString("username", employee.username)
-                    putInt("title", employee.title)
-                    putString("id", employee.id)
+                    putString("name", it.fullname)
+                    putString("token", it.accessToken)
+                    putString("username", it.username)
+                    putInt("title", it.title)
+                    putString("id", it.id)
                 }
-                Toast.makeText(context, "Welcome, ${employee.fullname}", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Welcome, ${it.fullname}", Toast.LENGTH_LONG).show()
                 callback(true)
             } else {
                 callback(false)
             }
-
-
         }
+
     }
 
 
     fun registerGuest(guest: Guest, callback: (logged: Boolean) -> Unit) {
-        showHideLoadingView()
-        AndroidNetworking.post("${host}Guest")
-            .setPriority(Priority.HIGH)
-            .addApplicationJsonBody(guest)
-            .build()
-            .getAsObject(Guest::class.java, object : ParsedRequestListener<Guest> {
-                override fun onResponse(response: Guest?) {
-                    showHideLoadingView()
-                    if (response != null) {
-                        shared.edit {
-                            putString("name", response.fullname)
-                            putString("token", response.accessToken)
-                            putString("username", response.username)
-                            putInt("title", response.title)
-                            putString("id", response.id)
-                        }
-
-                        callback(true)
-                    } else {
-                        callback(false)
-                    }
+        dynamicRequest(Method.POST, url = "Guest", body = guest) {
+            if (it != null) {
+                shared.edit {
+                    putString("name", it.fullname)
+                    putString("token", it.accessToken)
+                    putString("username", it.username)
+                    putInt("title", it.title)
+                    putString("id", it.id)
                 }
 
-                override fun onError(anError: ANError?) {
-                    showHideLoadingView()
-                    callback(false)
-                    println("Basem ${anError?.errorDetail},${anError?.errorBody}")
-                }
-            })
+                callback(true)
+            } else {
+                callback(false)
+            }
+        }
+
     }
 
     fun createMetaAssist(meta: MetaAssist, callback: (MetaAssist: MetaAssist) -> Unit) {
         meta.user = getId()
-        showHideLoadingView()
-        AndroidNetworking.post("${host}MetaAssist")
-            .setPriority(Priority.HIGH)
-            .addApplicationJsonBody(meta)
-            .build()
-            .getAsObject(MetaAssist::class.java, object : ParsedRequestListener<MetaAssist> {
-                override fun onResponse(response: MetaAssist?) {
-                    showHideLoadingView()
-                    if (response != null) {
-                        callback(response)
-                    } else {
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
-                override fun onError(anError: ANError?) {
-                    showHideLoadingView()
-                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-                }
-            })
+        dynamicRequest(Method.POST, url = "MetaAssist", body = meta) {
+            if (it != null) {
+                callback(it)
+            } else {
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     }
 
 
     fun retrieveProgramme(callback: (prog: ArrayList<Programme>) -> Unit) {
-        baseArrayRequest("Programme", Programme::class.java) { progs: ArrayList<Programme>? ->
-            if (progs.isNullOrEmpty()) {
-                return@baseArrayRequest
+        dynamicRequest<ArrayList<Programme>>(url = "Programme") {
+            if (it.isNullOrEmpty()) {
+                return@dynamicRequest
             } else {
-                println("Basem ${progs.first().status}")
-                callback(progs)
+                println("Basem ${it.first().status}")
+                callback(it)
             }
-
         }
+
     }
 
 
     fun retrieveTimeline(callback: (times: ArrayList<Timeline>) -> Unit) {
-        baseArrayRequest(
-            "Timeline/${getId()}",
-            Timeline::class.java
-        ) { times: ArrayList<Timeline>? ->
-
-            if (times.isNullOrEmpty()) {
-                return@baseArrayRequest
+        dynamicRequest<ArrayList<Timeline>>(url = "Timeline/${getId()}") {
+            if (it.isNullOrEmpty()) {
+                return@dynamicRequest
             } else {
-                println("Basem ${times.first().title}")
-                callback(times)
+                println("Basem ${it.first().title}")
+                callback(it)
             }
-
         }
+
     }
 
     fun retrieveSponsors(callback: (times: ArrayList<Sponsor>) -> Unit) {
-        baseArrayRequest("Sponsor", Sponsor::class.java) { times: ArrayList<Sponsor>? ->
-
-            if (times.isNullOrEmpty()) {
-                return@baseArrayRequest
+        dynamicRequest<ArrayList<Sponsor>>(url = "Sponsor") {
+            if (it.isNullOrEmpty()) {
+                return@dynamicRequest
             } else {
 
-                callback(times)
+                callback(it)
             }
-
         }
+
     }
 
     fun retriveSpeakers(callback: (speakers: ArrayList<Speaker>) -> Unit) {
-        baseArrayRequest("Speaker", Speaker::class.java) { times: ArrayList<Speaker>? ->
 
-            if (times.isNullOrEmpty()) {
-                return@baseArrayRequest
+        dynamicRequest<ArrayList<Speaker>>(url = "Speaker") {
+            if (it.isNullOrEmpty()) {
+                return@dynamicRequest
             } else {
-                callback(times)
+                callback(it)
             }
-
         }
+
     }
 
     fun saveAttendance(code: String, programmeId: Int) {
         val att = Attendance()
         att.userId = getId()
         att.programmeId = programmeId
-        AndroidNetworking.post("${host}Attendance/$code")
-            .setPriority(Priority.MEDIUM)
-            .addApplicationJsonBody(att)
-            .build()
-            .getAsObject(Attendance::class.java, object : ParsedRequestListener<Attendance> {
-                override fun onResponse(response: Attendance?) {
-                    Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
-                }
 
-                override fun onError(anError: ANError?) {
-                    Toast.makeText(context, "wrong attendance code", Toast.LENGTH_SHORT).show()
-                }
-            })
+        dynamicRequest(Method.POST, url = "Attendance/$code", body = att) {
+            if (it != null) {
+                Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "wrong attendance code", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
     }
 
 
     fun saveQuestion(question: Question) {
         question.userId = getId()
-        AndroidNetworking.post("${host}Question")
+
+        dynamicRequest(Method.POST, url = "Question", body = question) {
+            if (it != null) {
+                Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    private inline fun <reified T : Any> dynamicRequest(
+        method: Int = Method.GET,
+        url: String,
+        body: T? = null,
+        query: Map<String, Any>? = null,
+        crossinline callback: (res: T?) -> Unit
+    ) {
+        showHideLoadingView()
+        AndroidNetworking.request("${host}${url}", method)
             .setPriority(Priority.MEDIUM)
-            .addApplicationJsonBody(question)
+            .addApplicationJsonBody(body)
+            .addQueryParameter(query)
             .build()
-            .getAsObject(Question::class.java, object : ParsedRequestListener<Question> {
-                override fun onResponse(response: Question?) {
-                    Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
-                }
+            .getAsOkHttpResponseAndParsed(object : TypeToken<T>() {},
+                object : OkHttpResponseAndParsedRequestListener<T> {
+                    override fun onResponse(okHttpResponse: Response?, response: T) {
+                        showHideLoadingView()
+                        if (okHttpResponse != null && okHttpResponse.isSuccessful) {
+                            callback(response)
+                        } else {
+                            println("Basem API Good with error")
+                        }
+                    }
 
-                override fun onError(anError: ANError?) {
-                    Toast.makeText(context, anError?.errorDetail, Toast.LENGTH_SHORT).show()
-                }
-            })
-    }
-
-
-    private fun <T, C> baseRequest(url: String, c: Class<C>, callback: (res: T?) -> Unit) {
-        showHideLoadingView()
-        AndroidNetworking.get("${host}${url}")
-            .setPriority(Priority.HIGH)
-            .build()
-            .getAsObject(c, object : ParsedRequestListener<T> {
-                override fun onResponse(response: T) {
-                    showHideLoadingView()
-                    callback(response)
-                }
-
-                override fun onError(anError: ANError?) {
-                    showHideLoadingView()
-                    callback(null)
-                    println("Basem ${anError?.errorBody} ${anError?.errorDetail}")
-                }
-            })
-    }
-
-    private fun <T, C> baseArrayRequest(url: String, c: Class<C>, callback: (res: T?) -> Unit) {
-        showHideLoadingView()
-        AndroidNetworking.get("${host}${url}")
-            .setPriority(Priority.HIGH)
-            .build()
-            .getAsObjectList(c, object : ParsedRequestListener<T> {
-                override fun onResponse(response: T) {
-                    showHideLoadingView()
-                    callback(response)
-                }
-
-                override fun onError(anError: ANError?) {
-                    showHideLoadingView()
-                    callback(null)
-                    println("Basem ${anError?.errorBody} ${anError?.errorDetail}")
-                }
-            })
+                    override fun onError(anError: ANError?) {
+                        showHideLoadingView()
+                        callback(null)
+                        println("Basem API ${anError?.errorCode} ${anError?.errorBody} ${anError?.errorDetail} ${anError?.message},${anError?.response}")
+                    }
+                })
     }
 
 

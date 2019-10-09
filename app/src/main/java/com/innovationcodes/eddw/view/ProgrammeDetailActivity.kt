@@ -42,7 +42,8 @@ class ProgrammeDetailActivity : AppCompatActivity() {
         tvProDetailLocation.text = programme.room.name
         tvProDetailInformation.text = programme.description
         tvProDetailSpeakerName.text = programme.speaker.fullname
-        title = programme.speaker.fullname
+//        title = programme.speaker.fullname
+        title = ""
         txtProDetailNote.setText(dbOperations.getNote(id))
         btnProDetailNote.setOnClickListener {
             saveNote(programme)
