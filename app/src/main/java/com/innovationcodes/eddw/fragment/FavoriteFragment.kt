@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.innovationcodes.eddw.R
 import com.innovationcodes.eddw.adapter.ProgrammeAdapter
@@ -33,6 +34,9 @@ class FavoriteFragment : Fragment() {
         val adapter = ProgrammeAdapter(filtered!!)
         view.favRecyclerView.layoutManager = layout
         view.favRecyclerView.adapter = adapter
+        view.btnFavoriteBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

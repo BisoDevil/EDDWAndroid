@@ -12,7 +12,7 @@ import com.innovationcodes.eddw.controller.ServerOperations
 import com.innovationcodes.eddw.model.Programme
 import com.innovationcodes.eddw.model.Question
 import kotlinx.android.synthetic.main.activity_programme_detail.*
-import kotlinx.android.synthetic.main.content_programme_detail.*
+
 import kotlinx.android.synthetic.main.question_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,15 +35,15 @@ class ProgrammeDetailActivity : AppCompatActivity() {
         val sd = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
         val sDate = sd.parse(programme.startDate)
         val eDate = sd.parse(programme.endDate)
-        val sdFormated = SimpleDateFormat("MMM d, HH:mm a", Locale.US)
-        val edFormated = SimpleDateFormat("HH:mm a", Locale.US)
+        val sdFormatted = SimpleDateFormat("MMM d, HH:mm a", Locale.US)
+        val edFormatted = SimpleDateFormat("HH:mm a", Locale.US)
         tvProDetailTitle.text = programme.title
-        tvProDetailDate.text = "${sdFormated.format(sDate)} - ${edFormated.format(eDate)}"
+        tvProDetailDate.text = "${sdFormatted.format(sDate!!)} - ${edFormatted.format(eDate!!)}"
         tvProDetailLocation.text = programme.room.name
         tvProDetailInformation.text = programme.description
-        tvProDetailSpeakerName.text = programme.speaker.fullname
-//        title = programme.speaker.fullname
-        title = ""
+        tvProDetailSpeaker.text = programme.speaker.fullname
+
+        toolbar.title = programme.title
         txtProDetailNote.setText(dbOperations.getNote(id))
         btnProDetailNote.setOnClickListener {
             saveNote(programme)

@@ -9,6 +9,6 @@ class Programme {
     var speaker: Speaker = Speaker()
     var attendanceCode: String = ""
     var room: Room = Room()
-    var status: Int = 0
+    var status = ""
 }
 

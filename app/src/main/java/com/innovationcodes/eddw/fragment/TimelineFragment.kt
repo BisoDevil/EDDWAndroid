@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.innovationcodes.eddw.R
 import com.innovationcodes.eddw.adapter.TimelineAdapter
@@ -32,6 +33,9 @@ class TimelineFragment : Fragment() {
             val adapter = TimelineAdapter(it)
             view.timelineRecyclerView.layoutManager = layout
             view.timelineRecyclerView.adapter = adapter
+        }
+        view.btnTimeLineBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }

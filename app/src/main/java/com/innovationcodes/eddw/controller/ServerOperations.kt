@@ -19,7 +19,8 @@ import okhttp3.Response
 
 class ServerOperations(var context: Context) {
     private var dialog: AlertDialog
-    private val host = "http://eddw.innovationcodes.com/api/"
+    private val baseUrl = "http://eddw.innovationcodes.com/api/"
+    //    private val baseUrl = "http://10.230.9.100:45455/api/"
     private var shared: SharedPreferences
 
     init {
@@ -33,17 +34,13 @@ class ServerOperations(var context: Context) {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
-    internal fun showHideLoadingView() {
-        if (dialog.isShowing) {
-            dialog.dismiss()
-        } else {
-            dialog.show()
-        }
-
-    }
 
     fun isLogged(): Boolean {
         return shared.contains("id")
+    }
+
+    fun logout() {
+        shared.edit { clear() }
     }
 
     fun getFullName(): String {
@@ -211,6 +208,16 @@ class ServerOperations(var context: Context) {
 
     }
 
+    fun retrieveBooth(callback: (boothes: ArrayList<BoothBook>) -> Unit) {
+        dynamicRequest<ArrayList<BoothBook>>(url = "BoothBooks") {
+            if (it.isNullOrEmpty()) {
+                return@dynamicRequest
+            } else {
+                callback(it)
+            }
+        }
+    }
+
 
     fun saveQuestion(question: Question) {
         question.userId = getId()
@@ -230,8 +237,8 @@ class ServerOperations(var context: Context) {
         query: Map<String, Any>? = null,
         crossinline callback: (res: T?) -> Unit
     ) {
-        showHideLoadingView()
-        AndroidNetworking.request("${host}${url}", method)
+        dialog.show()
+        AndroidNetworking.request("${baseUrl}${url}", method)
             .setPriority(Priority.MEDIUM)
             .addApplicationJsonBody(body)
             .addQueryParameter(query)
@@ -239,16 +246,16 @@ class ServerOperations(var context: Context) {
             .getAsOkHttpResponseAndParsed(object : TypeToken<T>() {},
                 object : OkHttpResponseAndParsedRequestListener<T> {
                     override fun onResponse(okHttpResponse: Response?, response: T) {
-                        showHideLoadingView()
+                        dialog.dismiss()
                         if (okHttpResponse != null && okHttpResponse.isSuccessful) {
                             callback(response)
                         } else {
-                            println("Basem API Good with error")
+                            println("Basem API OK with error")
                         }
                     }
 
                     override fun onError(anError: ANError?) {
-                        showHideLoadingView()
+                        dialog.dismiss()
                         callback(null)
                         println("Basem API ${anError?.errorCode} ${anError?.errorBody} ${anError?.errorDetail} ${anError?.message},${anError?.response}")
                     }

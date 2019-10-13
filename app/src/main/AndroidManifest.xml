@@ -23,15 +23,8 @@
             android:screenOrientation="portrait">
 
         </activity>
-        <activity
-            android:name=".view.SpeakerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.SponsorActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.ScientificProgramme"
-            android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".view.ProgrammeDetailActivity"
             android:screenOrientation="portrait"
@@ -48,15 +41,8 @@
         <activity
             android:name=".view.GuestRegisterActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.GuestLoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.CompanyLoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".view.SpeakerLoginActivity"
-            android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".view.ChooseTypeActivity"
             android:screenOrientation="portrait" />

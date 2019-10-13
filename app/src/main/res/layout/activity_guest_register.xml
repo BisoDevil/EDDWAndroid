@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.GuestRegisterActivity"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".view.GuestRegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/btnRegisterBack"
@@ -25,15 +24,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_back" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginStart="32dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter"
+            android:layout_marginTop="16dp"
 
-            app:srcCompat="@drawable/guest" />
+            android:src="@drawable/guest" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -48,6 +45,7 @@
                 android:id="@+id/txtFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
                 android:hint="@string/full_name"
                 android:singleLine="true"
                 tools:text="Basem Abduallah" />
@@ -66,6 +64,7 @@
                 android:id="@+id/txtPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
                 android:hint="@string/phone_number"
                 android:inputType="phone"
                 android:singleLine="true"
@@ -85,6 +84,7 @@
                 android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
                 android:hint="@string/email_address"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
@@ -106,9 +106,10 @@
                 android:id="@+id/spTitle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="?attr/editTextBackground"
                 android:entries="@array/Titles"
                 android:hint="@string/badge_number"
-                android:singleLine="true"
+
                 tools:text="01007898142" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +126,7 @@
                 android:id="@+id/txtSpeciality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
                 android:hint="@string/speciality"
                 android:singleLine="true"
                 tools:text="01007898142" />
@@ -145,6 +147,7 @@
                 android:id="@+id/spCountry"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="?attr/editTextBackground"
                 android:entries="@array/Countries"
                 android:hint="@string/badge_number"
                 android:singleLine="true"
@@ -166,6 +169,7 @@
                 android:id="@+id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:singleLine="true"

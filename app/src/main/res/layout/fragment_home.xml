@@ -3,21 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_home_background">
 
-    <TextView
-        android:id="@+id/tvHomeFullName"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/imgEditUser"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Hello,\nBasem Abduallah" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/company"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/tvHomeFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Hello,\nBasem Abduallah" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgEditUser"
@@ -26,198 +44,225 @@
         android:layout_marginEnd="24dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHomeFullName"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvHomeFullName" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="25dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="6dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHomeFullName">
-
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="@string/search_hint"
-            app:defaultQueryHint="@string/search_hint"
-            app:queryHint="@string/search_hint" />
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/know_more"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:scrollbars="none">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardHomeProgramme"
-                android:layout_width="wrap_content"
-                android:layout_height="95dp"
-                android:layout_margin="4dp"
-                app:cardBackgroundColor="@color/colorAppRed"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/programme" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/programme"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardHomeSpeakers"
-                android:layout_width="170dp"
-                android:layout_height="95dp"
-                android:layout_margin="4dp"
-                app:cardBackgroundColor="@color/colorAppBlue"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/speaker" />
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/speaker"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardHomeSponsors"
-                android:layout_width="170dp"
-                android:layout_height="95dp"
-                android:layout_margin="4dp"
-                app:cardBackgroundColor="@color/colorAppGreen"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="12dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/sponsers" />
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sponsors"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabHomeLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewerHome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
+        app:contentPadding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabHomeLayout" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:id="@+id/tvTimeLine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_time_line"
+                android:gravity="center"
+                android:text="@string/my_timeline" />
+
+            <TextView
+
+                android:id="@+id/tvNote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_notepad"
+                android:gravity="center"
+                android:text="@string/my_notes" />
+
+            <TextView
+
+                android:id="@+id/tvFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_favorite"
+                android:gravity="center"
+                android:text="@string/favorites" />
+
+            <TextView
+                android:id="@+id/tvChat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_comment"
+                android:gravity="center"
+                android:text="@string/chat" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.07999998">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvProgramme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/programme"
+                android:gravity="center_vertical"
+                android:text="@string/programme"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHandsOn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/programme"
+                android:gravity="center_vertical"
+                android:text="@string/hands_on"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSpeakers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+
+                android:layout_weight="1"
+                android:drawableStart="@drawable/speaker_home"
+                android:gravity="center_vertical"
+                android:text="@string/speaker"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSponsor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/sponsor_home"
+                android:gravity="center_vertical"
+                android:text="@string/sponsors"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBooth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/booth"
+                android:gravity="center_vertical"
+                android:text="@string/booth"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvVideo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/videos"
+                android:gravity="center_vertical"
+                android:text="@string/recorded_session"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:sliderAnimationDuration="2000"
+            app:sliderAutoCycleDirection="right"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderCircularHandlerEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="2"
+            app:sliderStartAutoCycle="true" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

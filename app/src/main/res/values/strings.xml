@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EDDW</string>
-    <string name="choose_type">Select\nAttendee Type</string>
+    <string name="choose_type">Are you a</string>
     <string name="speaker">Speaker</string>
     <string name="company_comment">You\'re a member of\na pharmaceutical company</string>
     <string name="guest_comment">You want to participate\nto Conference</string>
@@ -51,4 +51,11 @@
     <string name="exp_date">Exp.Date (ex:04/23)</string>
     <string name="cvc">CVC</string>
     <string name="checkout">Checkout</string>
+    <string name="chat">Chat</string>
+    <string name="hands_on">Hands-On</string>
+    <string name="booth">Booth</string>
+    <string name="recorded_session">Recorded Session</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="location">Location</string>
 </resources>

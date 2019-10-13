@@ -6,9 +6,10 @@
         <item name="colorPrimary">@color/colorAppBlue</item>
         <item name="colorPrimaryDark">@color/colorAppGreen</item>
         <item name="colorAccent">@color/colorAppRed</item>
-        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:statusBarColor">@color/colorAppRed</item>
         <!--        <item name="android:navigationBarColor">@color/colorPrimary</item>-->
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
         <item name="android:textAppearance">@style/app_textView</item>
         <item name="android:textViewStyle">@style/app_textView</item>
         <item name="windowActionBar">false</item>

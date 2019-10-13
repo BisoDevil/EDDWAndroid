@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="6dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:background="@color/colorAppBlue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
 
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/timeline_bg"
         android:orientation="vertical"
@@ -31,7 +20,7 @@
         android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/divider2"
+        app:layout_constraintStart_toEndOf="@+id/tvTimelineDate"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -63,14 +52,17 @@
         android:id="@+id/tvTimelineDate"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/circular_background"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/divider2"
-        app:layout_constraintStart_toStartOf="@+id/divider2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="24\nMar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

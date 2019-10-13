@@ -8,16 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.innovationcodes.eddw.R
+import com.innovationcodes.eddw.adapter.SliderAdapter
 import com.innovationcodes.eddw.controller.ProgrammeViewModel
 import com.innovationcodes.eddw.controller.ServerOperations
-import com.innovationcodes.eddw.model.Programme
-import com.innovationcodes.eddw.view.ScientificProgramme
-import com.innovationcodes.eddw.view.SpeakerActivity
-import com.innovationcodes.eddw.view.SponsorActivity
+import com.smarteist.autoimageslider.IndicatorAnimations
+import com.smarteist.autoimageslider.SliderAnimations
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
@@ -32,51 +31,44 @@ class HomeFragment : Fragment() {
     ): View? {
 
         ViewModelProviders.of(this).get(ProgrammeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        ProgrammeViewModel.programs.observe(this, androidx.lifecycle.Observer {
-            println("Basem observe")
-            val homeAdapter = DashboardPagerAdapter(childFragmentManager, it)
-            root.viewerHome.adapter = homeAdapter
-            root.tabHomeLayout.setupWithViewPager(root.viewerHome, true)
-            root.tabHomeLayout.getTabAt(1)?.select()
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_home, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         operations = ServerOperations(context!!)
-        view.cardHomeProgramme.setOnClickListener {
-            showAllProgrammes()
-        }
-        view.cardHomeSponsors.setOnClickListener {
-            showAllSponsors()
-        }
-        view.cardHomeSpeakers.setOnClickListener {
-            showAllSpeaker()
-        }
+
 
         view.imgEditUser.setOnClickListener {
             sendMail()
         }
+        view.tvHomeFullName.setOnClickListener {
+            operations.logout()
 
-
-        setupSearchForProgramme()
-    }
-
-    private fun showAllProgrammes() {
-        val pro = Intent(context!!, ScientificProgramme::class.java)
-        startActivity(pro)
-    }
-
-    private fun showAllSponsors() {
-        val pro = Intent(context!!, SponsorActivity::class.java)
-        startActivity(pro)
-    }
-
-    private fun showAllSpeaker() {
-        val pro = Intent(context!!, SpeakerActivity::class.java)
-        startActivity(pro)
+        }
+        view.tvProgramme.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_scientificProgramme)
+        }
+        view.tvSpeakers.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_speakerActivity)
+        }
+        view.tvSponsor.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_sponsorActivity2)
+        }
+        view.tvFavorite.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_favorite)
+        }
+        view.tvTimeLine.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_timeLine)
+        }
+        view.tvNote.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_notes)
+        }
+        view.tvBooth.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_boothFragment)
+        }
+        initSlider()
     }
 
 
@@ -97,59 +89,20 @@ class HomeFragment : Fragment() {
         view!!.tvHomeFullName.text = "Hello,\n${operations.getFullName()}"
     }
 
-    private fun setupSearchForProgramme() {
 
-//        view!!.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return true
-//            }
-//        })
+    private fun initSlider() {
+        val links = arrayListOf(
+            "https://www.companieshistory.com/wp-content/uploads/2015/01/Novartis.jpg",
+            "https://colombiareports.com/wp-content/uploads/2019/08/pfizer-1170x585.jpg",
+            "https://wazayf4u.com/wp-content/uploads/2017/10/download-2_600x300.jpg"
+        )
+        val adapter = SliderAdapter(links)
+        imageSlider.sliderAdapter = adapter
+        imageSlider.setIndicatorAnimation(IndicatorAnimations.SLIDE)
+        imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+        imageSlider.startAutoCycle()
+
     }
 
-
-    inner class DashboardPagerAdapter(
-        fm: FragmentManager,
-        var allProgrammes: ArrayList<Programme>
-    ) : FragmentPagerAdapter(fm) {
-
-        private val arrFragemt = getFragments()
-        private val arrTitles = resources.getStringArray(R.array.tab_titles)
-        override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return arrFragemt[position]
-        }
-
-        override fun getCount(): Int {
-            // Show 3 total pages.
-            return arrFragemt.size
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return arrTitles[position]
-        }
-
-        private fun getFragments(): ArrayList<Fragment> {
-            val arrFragment = arrayListOf<Fragment>()
-            val grouped = allProgrammes.groupBy { it.status }
-
-            val running = ProgrammeFragment()
-            running.list = grouped[1] ?: listOf()
-            arrFragment.add(running)
-
-            val upComing = ProgrammeFragment()
-            upComing.list = grouped[0] ?: listOf()
-            arrFragment.add(upComing)
-            val finished = ProgrammeFragment()
-            finished.list = grouped[2] ?: listOf()
-            arrFragment.add(finished)
-
-            return arrFragment
-        }
-    }
 
 }

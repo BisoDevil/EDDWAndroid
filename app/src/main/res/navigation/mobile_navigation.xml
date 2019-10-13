@@ -9,7 +9,31 @@
         android:id="@+id/navigation_home"
         android:name="com.innovationcodes.eddw.fragment.HomeFragment"
         android:label="@string/title_activity_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_scientificProgramme"
+            app:destination="@id/scientificProgramme"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_home_to_speakerActivity"
+            app:destination="@id/speakerActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_sponsorActivity2"
+            app:destination="@id/sponsorActivity2" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_favorite"
+            app:destination="@id/navigation_favorite" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_timeLine"
+            app:destination="@id/navigation_timeLine" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notes"
+            app:destination="@id/navigation_notes" />
+        <action
+            android:id="@+id/action_navigation_home_to_boothFragment"
+            app:destination="@id/boothFragment" />
+    </fragment>
 
 
     <fragment
@@ -29,4 +53,24 @@
         android:name="com.innovationcodes.eddw.fragment.TimelineFragment"
         android:label="@string/my_timeline"
         tools:layout="@layout/fragment_timeline" />
+    <fragment
+        android:id="@+id/scientificProgramme"
+        android:name="com.innovationcodes.eddw.fragment.ScientificProgramme"
+        android:label="activity_scentific_programme"
+        tools:layout="@layout/activity_scentific_programme" />
+    <fragment
+        android:id="@+id/speakerActivity"
+        android:name="com.innovationcodes.eddw.fragment.SpeakerActivity"
+        android:label="activity_speaker"
+        tools:layout="@layout/activity_speaker" />
+    <fragment
+        android:id="@+id/sponsorActivity2"
+        android:name="com.innovationcodes.eddw.fragment.SponsorActivity"
+        android:label="activity_sponsor"
+        tools:layout="@layout/activity_sponsor" />
+    <fragment
+        android:id="@+id/boothFragment"
+        android:name="com.innovationcodes.eddw.fragment.BoothFragment"
+        android:label="fragment_booth"
+        tools:layout="@layout/fragment_booth" />
 </navigation>

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".view.SpeakerActivity">
+    android:background="@drawable/ic_home_background"
+    tools:context=".fragment.SpeakerActivity">
 
     <ImageButton
         android:id="@+id/btnSpeakerBack"

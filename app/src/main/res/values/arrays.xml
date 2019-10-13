@@ -210,4 +210,10 @@
         <item>Upcoming</item>
         <item>Completed</item>
     </string-array>
+    <string-array name="UserTypes">
+        <item>speaker</item>
+        <item>company</item>
+        <item>guest</item>
+        <item>anonymous</item>
+    </string-array>
 </resources>
