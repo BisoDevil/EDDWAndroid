@@ -34,7 +34,6 @@ class SpeakerAdapter(private var items: List<Speaker>) :
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
         fun bindItems(item: Speaker) {
-
             itemView.tvSpeakerName.text = item.fullname
             itemView.tvSpeakerInfo.text = item.country
 

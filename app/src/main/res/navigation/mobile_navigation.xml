@@ -14,10 +14,16 @@
             android:id="@+id/action_navigation_home_to_scientificProgramme"
             app:destination="@id/scientificProgramme"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:exitAnim="@anim/nav_default_exit_anim">
+            <argument
+                android:defaultValue="Scentific"
+                android:name="type" />
+        </action>
         <action
             android:id="@+id/action_navigation_home_to_speakerActivity"
-            app:destination="@id/speakerActivity" />
+            app:destination="@id/speakerActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_navigation_home_to_sponsorActivity2"
             app:destination="@id/sponsorActivity2" />
@@ -57,7 +63,12 @@
         android:id="@+id/scientificProgramme"
         android:name="com.innovationcodes.eddw.fragment.ScientificProgramme"
         android:label="activity_scentific_programme"
-        tools:layout="@layout/activity_scentific_programme" />
+        tools:layout="@layout/activity_scentific_programme">
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="Scentific" />
+    </fragment>
     <fragment
         android:id="@+id/speakerActivity"
         android:name="com.innovationcodes.eddw.fragment.SpeakerActivity"

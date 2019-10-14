@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -48,7 +49,14 @@ class HomeFragment : Fragment() {
 
         }
         view.tvProgramme.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_scientificProgramme)
+            val args = Bundle()
+            args.putString("type", "Scentific")
+            findNavController().navigate(R.id.action_navigation_home_to_scientificProgramme, args)
+        }
+        view.tvHandsOn.setOnClickListener {
+            val args = Bundle()
+            args.putString("type", "HandsOn")
+            findNavController().navigate(R.id.action_navigation_home_to_scientificProgramme, args)
         }
         view.tvSpeakers.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_speakerActivity)
@@ -68,6 +76,10 @@ class HomeFragment : Fragment() {
         view.tvBooth.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_boothFragment)
         }
+        view.tvChat.setOnClickListener {
+            Toast.makeText(context, "Not yet", Toast.LENGTH_SHORT).show()
+        }
+
         initSlider()
     }
 

@@ -10,5 +10,6 @@ class Programme {
     var attendanceCode: String = ""
     var room: Room = Room()
     var status = ""
+    var type = ""
 }
 

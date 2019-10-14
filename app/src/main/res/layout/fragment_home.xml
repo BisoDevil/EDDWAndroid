@@ -51,7 +51,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="10dp"
@@ -250,7 +250,7 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:sliderAnimationDuration="2000"
+            app:sliderAnimationDuration="600"
             app:sliderAutoCycleDirection="right"
             app:sliderAutoCycleEnabled="true"
             app:sliderCircularHandlerEnabled="true"
@@ -260,9 +260,9 @@
             app:sliderIndicatorOrientation="horizontal"
             app:sliderIndicatorPadding="3dp"
             app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="#FFF"
-            app:sliderScrollTimeInSec="2"
+            app:sliderIndicatorSelectedColor="@android:color/white"
+            app:sliderIndicatorUnselectedColor="@color/colorAppBlue"
+            app:sliderScrollTimeInSec="5"
             app:sliderStartAutoCycle="true" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

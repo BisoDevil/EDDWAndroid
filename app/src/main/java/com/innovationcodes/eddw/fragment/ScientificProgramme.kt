@@ -27,10 +27,14 @@ class ScientificProgramme : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Scentific // HandsOn
+        val type = arguments?.getString("type", "")
+
         ViewModelProviders.of(this).get(ProgrammeViewModel::class.java)
-        ProgrammeViewModel.programs.observe(this, Observer {
+        ProgrammeViewModel.programs.observe(this, Observer { list ->
             val layout = LinearLayoutManager(context)
-            val adapter = ProgrammeAdapter(it)
+
+            val adapter = ProgrammeAdapter(list.filter { it.type == type })
             scientificProgrammeRV.layoutManager = layout
             scientificProgrammeRV.adapter = adapter
 
